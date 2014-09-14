@@ -1,0 +1,17 @@
+{
+  "name": "ivy-client",
+  "version": "0.0.1",
+  "description": "Client library for communicating with Ivy servers.",
+  "main": "ivy.js",
+  "dependencies": {
+    "events": "~1.0.1",
+    "inherits": "~2.0.1"
+  },
+  "devDependencies": {
+  },
+  "author": {
+    "name": "Max Goodman",
+    "email": "c@chromakode.com"
+  },
+  "license": "BSD"
+}
