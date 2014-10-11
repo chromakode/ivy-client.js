@@ -113,18 +113,26 @@ Ivy.prototype.getTimestamp = function(callback) {
   this._send('@', callback)
 }
 
-Ivy.prototype.load = function(path, count) {
-  // FIXME: add ack callback
+Ivy.prototype.load = function(path, options) {
+  options = options || {}
   var req = new XMLHttpRequest()
   req.onload = this._onLog.bind(this)
 
-  params = ''
-  if (count) {
-    params = '?n=' + count
+  params = []
+  if (options.count) {
+    params.push('n=' + options.count)
+  }
+  if (options.at) {
+    params.push('at=' + options.at)
+  }
+
+  var paramString = ''
+  if (params) {
+    paramString = '?' + params.join('&')
   }
 
   // FIXME: https?
-  var url = 'http://' + this.url + '/log' + path + params
+  var url = 'http://' + this.url + '/events' + path + paramString
   req.open('get', url, true)
   req.send()
 }
